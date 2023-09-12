@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>grade-analysis</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Grade Analysis</a>
+        <a href="#">Terms of Service</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="title">
+        <h1>Grades Input Form</h1>
+      </div>
+
+      <div class="sort">
+        <button class = "btn">降序排列</button>
+        <button class = "btn">升序排列</button>
+      </div>
+      
+      <div class="input-block">
+        <form action="">
+          <input 
+            type="text"
+            placeholder = "class category"
+            class = "class-type"
+            list = "class-list"
+          >
+          <input 
+            type="text"
+            placeholder = " class number"
+            class = "class-number"
+          >
+          <input 
+            type="number"
+            placeholder = "credits"
+            min = "0"
+            max = "6"
+            class = "class-credit"
+          >
+
+          <input 
+            type="text" 
+            placeholder = "grade" 
+            class = "class-grade"
+            list = "grade-list"
+
+            
+          >
+          
+          <button class="trash">
+            <i class="fas fa-trash"></i>
+          </button>
+
+         
+
+        </form>
+        <form action="">
+          <input 
+            type="text"
+            placeholder = "class category"
+            class = "class-type"
+            list = "class-list"
+          >
+          <input 
+            type="text"
+            placeholder = " class number"
+            class = "class-number"
+          >
+          <input 
+            type="number"
+            placeholder = "credits"
+            min = "0"
+            max = "6"
+            class = "class-credit"
+          >
+
+          <input 
+            type="text" 
+            placeholder = "grade" 
+            class = "class-grade"
+            list = "grade-list"
+
+            
+          >
+          
+          <button class="trash">
+            <i class="fas fa-trash"></i>
+          </button>
+
+         
+
+        </form>
+      </div>
+
+      <button class="add-btn">
+        <i class="fas fa-add"></i>
+        
+      </button>
+
+      <div class="circle">
+        <h3>GPA</h3>
+        <h1 id = "gpa">0.00</h1>
+      </div>
+
+    
+
+    </main>
+  
+  <datalist id="class-list">
+    <option value="CS">computer sciences</option>
+    <option value="EN">english</option>
+    <option value="PL">programing languege</option>
+    <option value="WD">web devlopment</option>
+
+  </datalist>
+  <datalist id = "grade-list">
+    <option value=""></option>
+    <option value="A">A</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B">B</option>
+    <option value="B-">B-</option>
+    <option value="C+">C+</option>
+    <option value="C">C</option>
+    <option value="C-">C-</option>
+    <option value="D+">D+</option>
+    <option value="D">D</option>
+    <option value="D-">D-</option>
+    <option value="F">F</option>
+
+  </datalist>
+  </body>
+</html>
