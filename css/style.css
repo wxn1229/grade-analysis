@@ -22,7 +22,10 @@ body {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .animation .slider {
   width: 100%;
@@ -38,7 +41,7 @@ body {
   z-index: 2;
   margin-top: 10vh;
   height: 80vh;
-  width: 100%;
+  width: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +49,6 @@ body {
 .animation .img img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
 }
 
 header {
