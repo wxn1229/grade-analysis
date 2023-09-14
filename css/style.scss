@@ -108,6 +108,7 @@ main{
   align-items: center;
 
   button{
+    border: none;
     cursor: pointer;
   }
 
@@ -145,6 +146,8 @@ main{
         height:28px;
         border-radius: 4px;
       }
+
+
 
       button{
         height: 28px;

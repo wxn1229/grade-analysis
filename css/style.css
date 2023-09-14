@@ -90,6 +90,7 @@ main {
   align-items: center;
 }
 main button {
+  border: none;
   cursor: pointer;
 }
 main .title h1 {
