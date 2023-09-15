@@ -28,7 +28,7 @@ allBtn.forEach(btn => {
 
 // change grade color
 
-const allGrade = document.querySelectorAll(".class-grade")
+let allGrade = document.querySelectorAll(".class-grade")
 
 allGrade.forEach(grade => {
   grade.addEventListener("change", e => {
@@ -59,11 +59,7 @@ function changeColor(target) {
 }
 
 // calculate GPA
-const allCredit = document.querySelectorAll(".class-credit")
-
-let sum = 0
-let creditSum = 0
-let gpa
+let allCredit = document.querySelectorAll(".class-credit")
 
 allCredit.forEach(credit => {
   credit.addEventListener("change", () => {
@@ -81,7 +77,101 @@ allGrade.forEach(credit => {
 
 
 function calGPA() {
+  let sum = 0
+  let creditSum = 0
+
+
+  let gpa = 0
+  //console.log("calGPA")
+
+  allCredit = document.querySelectorAll(".class-credit")
+  allGrade = document.querySelectorAll(".class-grade")
+  let gpaText = document.querySelector("#gpa")
+
+  allCredit.forEach((credit, index) => {
+    //console.log(allGrade[index].value)
+
+    if (credit.value) {
+
+      creditSum += parseFloat(credit.value)
+
+      sum += gradeTransform(allGrade[index].value) * parseFloat(credit.value)
+    }
 
 
 
+
+    //sum = 1 * 0
+    //console.log("creditSum: " + creditSum)
+    //console.log("sum: " + sum)
+    //console.log("credit: " + parseFloat(credit.value))
+    //console.log("grade: " + gradeTransform(allGrade[index].value))
+  })
+
+  if (creditSum) {
+
+    gpa = sum / creditSum
+  }
+
+
+
+  gpaText.innerText = gpa.toFixed(2)
+
+
+
+
+
+
+
+}
+
+
+function gradeTransform(grade) {
+  let result = 0;
+
+  if (grade === "A+") {
+    result = 4.0;
+  }
+  else if (grade === "A") {
+    result = 4.0;
+  }
+  else if (grade === "A-") {
+    result = 3.7;
+  }
+  else if (grade === "B+") {
+    result = 3.3;
+  }
+  else if (grade === "B") {
+    result = 3.0;
+  }
+  else if (grade === "B-") {
+    result = 2.7;
+  }
+  else if (grade === "C+") {
+    result = 2.3;
+  }
+  else if (grade === "C") {
+    result = 2.0;
+  }
+  else if (grade === "C-") {
+    result = 1.7;
+  }
+  else if (grade === "D+") {
+    result = 1.3;
+  }
+  else if (grade === "D") {
+    result = 1.0;
+  }
+  else if (grade === "D-") {
+    result = 0.7;
+  }
+  else if (grade === "F") {
+    result = 0.0;
+  }
+  else {
+    result = 0;
+  }
+  // 添加其他成绩的条件
+
+  return result;
 }
