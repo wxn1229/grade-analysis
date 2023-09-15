@@ -13,31 +13,41 @@ window.addEventListener("keypress", e => {
 
 
 // disable button submit
+function defaultBtn() {
+  let allBtn = document.querySelectorAll("button")
 
-const allBtn = document.querySelectorAll("button")
 
+  allBtn.forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault()
 
-allBtn.forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault()
+    })
 
   })
 
-})
+
+}
+
+defaultBtn()
+
 
 
 // change grade color
+function colorEvent() {
+  let allGrade = document.querySelectorAll(".class-grade")
 
-let allGrade = document.querySelectorAll(".class-grade")
-
-allGrade.forEach(grade => {
-  grade.addEventListener("change", e => {
-    changeColor(e.target)
+  allGrade.forEach(grade => {
+    grade.addEventListener("change", e => {
+      changeColor(e.target)
 
 
+    })
   })
-})
 
+
+}
+
+colorEvent()
 
 function changeColor(target) {
   let value = target.value[0]
@@ -59,20 +69,29 @@ function changeColor(target) {
 }
 
 // calculate GPA
-let allCredit = document.querySelectorAll(".class-credit")
+//
+function formAddEvent() {
+  let allCredit = document.querySelectorAll(".class-credit")
+  allGrade = document.querySelectorAll(".class-grade")
+  console.log("allCredit: " + allCredit)
+  console.log("allGrade: " + allGrade)
 
-allCredit.forEach(credit => {
-  credit.addEventListener("change", () => {
-    calGPA()
+  allCredit.forEach(credit => {
+    credit.addEventListener("change", () => {
+      calGPA()
 
+    })
   })
-})
-allGrade.forEach(credit => {
-  credit.addEventListener("change", () => {
-    calGPA()
+  allGrade.forEach(credit => {
+    credit.addEventListener("change", () => {
+      calGPA()
 
+    })
   })
-})
+
+}
+
+formAddEvent()
 
 
 
@@ -175,3 +194,75 @@ function gradeTransform(grade) {
 
   return result;
 }
+
+let addbtn = document.querySelector(".add-btn")
+
+const formTemplate = `<form action="">
+          <input 
+            type="text"
+            placeholder = "class category"
+            class = "class-type"
+            list = "class-list"
+          >
+          <input 
+            type="text"
+            placeholder = " class number"
+            class = "class-number"
+          >
+          <input 
+            type="number"
+            placeholder = "credits"
+            min = "0"
+            max = "6"
+            class = "class-credit"
+          >
+
+          <input 
+            type="text" 
+            placeholder = "grade" 
+            class = "class-grade"
+            list = "grade-list"
+
+            
+          >
+          
+          <button class="trash">
+            <i class="fas fa-trash"></i>
+          </button>
+
+         
+
+        </form>`
+
+addbtn.addEventListener("click", () => {
+  addform()
+
+})
+
+
+function removeFromEvent() {
+  let trashes = document.querySelectorAll(".trash")
+  trashes.forEach(trash => {
+    trash.addEventListener("click", () => {
+      trash.parentNode.remove()
+      calGPA()
+
+    })
+  })
+}
+removeFromEvent()
+
+
+function addform() {
+
+  let block = document.querySelector(".input-block")
+  block.insertAdjacentHTML("beforeend", formTemplate)
+  formAddEvent()
+  defaultBtn()
+  colorEvent()
+  removeFromEvent()
+
+}
+
+
+
