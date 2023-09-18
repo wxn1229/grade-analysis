@@ -240,11 +240,19 @@ addbtn.addEventListener("click", () => {
 })
 
 
+
 function removeFromEvent() {
   let trashes = document.querySelectorAll(".trash")
   trashes.forEach(trash => {
     trash.addEventListener("click", () => {
-      trash.parentNode.remove()
+      //console.log(trash.parentElement)
+      let form = trash.parentElement
+      form.addEventListener("animationend", () => {
+        form.remove()
+      })
+
+      form.style.animation = "scaleDown 0.3s ease forwards"
+
       calGPA()
 
     })
@@ -257,6 +265,8 @@ function addform() {
 
   let block = document.querySelector(".input-block")
   block.insertAdjacentHTML("beforeend", formTemplate)
+  let forms = document.querySelectorAll("form")
+  forms[forms.length - 1].style.animation = "scaleUp 0.3s ease forwards"
   formAddEvent()
   defaultBtn()
   colorEvent()
@@ -265,4 +275,66 @@ function addform() {
 }
 
 
+function sortUp() {
+  let upBtn = document.querySelector(".up-btn")
 
+  upBtn.addEventListener("click", () => {
+    let forms = document.querySelectorAll("form")
+    let formsArr = Array.from(forms)
+    let inputBlock = document.querySelector(".input-block")
+    //    console.log(formsArr)
+    //    formsArr.forEach(form => {
+    //      console.log(form[3].value)
+    //    })
+    formsArr.sort((a, b) => gradeTransform(a[3].value) - gradeTransform(b[3].value))
+    //    console.log(formsArr)
+    //    formsArr.forEach(form => {
+    //      console.log(form[3].value)
+    //    })
+    forms.forEach(form => {
+      form.remove()
+    })
+
+    formsArr.forEach(form => {
+      form.style.animation = "none"
+      inputBlock.appendChild(form)
+    })
+
+  })
+
+
+}
+
+sortUp()
+
+function sortDown() {
+  let downBtn = document.querySelector(".down-btn")
+
+  downBtn.addEventListener("click", () => {
+    let forms = document.querySelectorAll("form")
+    let formsArr = Array.from(forms)
+    let inputBlock = document.querySelector(".input-block")
+    //    console.log(formsArr)
+    //    formsArr.forEach(form => {
+    //      console.log(form[3].value)
+    //    })
+    formsArr.sort((a, b) => gradeTransform(b[3].value) - gradeTransform(a[3].value))
+    //    console.log(formsArr)
+    //    formsArr.forEach(form => {
+    //      console.log(form[3].value)
+    //    })
+    forms.forEach(form => {
+      form.remove()
+    })
+
+    formsArr.forEach(form => {
+      form.style.animation = "none"
+      inputBlock.appendChild(form)
+    })
+
+  })
+
+
+}
+
+sortDown()
